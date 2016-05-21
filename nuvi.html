@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		main {
+			background-color: darkblue;
+		}
+
+		ul li{
+			margin: 0px;
+			padding: 0px;
+			display: inline-block;
+		}
+
+		.resultsDiv {
+			width: 400px;
+			height: 270px;
+			background: linear-gradient(0deg, blue, lightblue);
+			display: inline-block;
+		}
+
+		.actorProfileSection {
+			width: 50%;
+			height: 100%;
+			background-color: ;
+			display: inline-block;
+			position: relative;
+		}
+
+		.actorAvatarDiv {
+			width: 160px;
+			height: 160px;
+			background-color: hsla(1, 0%, 25%, 0.3);
+			display: inline-block;
+			position: relative;
+			top: 20px;
+			left: 20px;
+			border-radius: 10px;
+		}
+
+		.actorInfoContainer {
+			width: 160px;
+			height: 20px;
+			display: inline-block;
+			position: relative;
+			top: 20px;
+			left: 20px;
+			margin-top: 5px;
+		}
+
+		.actorInfoDiv {
+			width: 160px;
+			height: 20px;
+			display: inline-block;
+		}
+
+		.providerLogoDiv {
+			width: 36px;
+			height: 36px;
+			background-color: white;
+			display: inline-block;
+			border-radius: 10px;
+		}
+
+		.providerLogoDiv img{
+			position: relative;
+			top: 0px;
+			left: 0px;
+			display: inline-block;
+		}
+
+		.actorUsernameDiv {
+			width: 130px;
+			height: 10px;
+			position: relative;
+			bottom: 25px;
+			display: inline;
+			margin-left: 10px;
+			color: white;
+			font-size: 15px;
+			overflow: auto;
+		}
+
+		.actorDescriptionDiv {
+			width: 130px;
+			display: inline-block;
+			position: relative;
+			left: 46px;
+			bottom: 27px;
+			line-height: 0.65;
+		}
+
+		.descriptionSpan {
+			font-size: 11px;
+			color: white;
+		}
+
+
+
+		.activityMessageSection {
+			width: 50%;
+			height: 100%;
+			display: inline-block;
+			position: relative;
+			vertical-align: top;
+			box-shadow: 1px 1px 1px lightgray;
+		}
+
+		input {
+			width: 35px;
+			height: 15px;
+			margin-left: 10px;
+			vertical-align: middle;
+			z-index: 1;
+		}
+
+		.likeButton {
+			border-radius: 2px;
+		}
+
+		.shareButton {
+			border-radius: 2px;
+		}
+
+		.commentButton {
+			margin-top: 2px;
+		}
+
+		.activityDateDiv {
+			width: 190px;
+			height: 25px;
+			display: inline-block;
+			position: relative;
+			top: 0px;
+			background-color: hsla(1, 0%, 25%, 0.5);
+			padding-top: 10px;
+			padding-left: 10px;
+			color: white;
+			font-size: 12px;
+		}
+
+		.activityMessageDiv {
+			width: 160px;
+			height: 160px;
+			padding: 20px;
+			background-color: hsla(255, 60%, 100%, 0.3);
+		}
+
+		.visualizationSection {
+			width: 400px;
+			height: 35px;
+			background-color: hsla(255, 80%, 100%, 0.5);
+			position: relative;
+			bottom: 35px;
+			box-shadow: 1px 1px 1px lightgray;
+			z-index: 0;
+		}
+
+		.spanButton {
+			margin-top: 5px;
+		}
+
+		.commentCount {
+			display: inline-block;
+			position: relative;
+			bottom: 30px;
+		}
+
+		.engagementCounterContainer {
+			display: inline-block;
+			width: 200px;
+			height: 35px;
+		}
+
+		.engagementWord {
+			display: inline-block;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			vertical-align: middle;
+			color: white;
+			margin-left: 5px;
+			margin-top: 2px;
+			text-shadow: 1px 1px 1px darkgray;
+		}
+
+		.engagementCounterLevel {
+			display: inline-block;
+			width: 80px;
+			height: 15px;
+			position: relative;
+			left: 6px;
+			top: 5px;
+			background-color: hsla(1, 0%, 25%, 0.5);
+		}
+
+		.engagementCounterFiller {
+			height: 15px;
+			background-color: lightgreen;
+		}
+
+		.engagementDigits {
+			display: inline-block;
+			color: white;
+			position: relative;
+			left: 13px;
+			top: 3px;
+		}
+
+		.buttonSetDiv {
+			display: inline-block;
+			width: 195px;
+			height: 30px;
+			margin-left: 0px;
+			vertical-align: middle;
+			padding-top: 2px;
+		}
+
+		.buttonSetDiv p{
+			display: inline-block;
+			position: relative;
+			top: 2px;
+			margin-left: 5px;
+			padding-top: 5px;
+			color: white;
+		}
+
+	</style>
+
+    <body id="body">
+    	<main id="main"></main>
+
+
+        <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+        
+        <script type="text/javascript">
+        	$.getJSON('https://nuvi-challenge.herokuapp.com/activities', function(data) {
+        			/*optional stuff to do after success */
+        			var output = "<ul>";
+
+        			for(i = 0; i < data.length; i++) {
+        				var logo = "social";
+        				var httpChecker = 'http';
+        				var message = "message";
+        				var originalMessage =  data[i].activity_message.slice(1,5);
+        				var type = data[i].activity_attachment_type;
+        				var likeButton = "like";
+        				var shareButton = "share";
+        				var commentButton = "comment";
+        				var buttonSet = "buttonSet";
+        				var engagementDigits = 0;
+        				var fillerCalculation = 0;
+        				
+
+        				if (data[i].provider == "twitter") {
+        					logo = "/images/twitterLogoBlue.png";
+        					likeButton = "/images/twitterLike.png";
+        					shareButton = "/images/twitterShare.png";
+        					commentButton = "/images/twitterComment.png";
+        				} else if(data[i].provider == "facebook") {
+        					logo = "f/images/BLogo.png";
+        					likeButton = "/images/fBLike.png";
+        					shareButton = "/images/fBShare.png";
+        					commentButton = "/images/fBComment.png";
+        				} else if(data[i].provider == "tumblr") {
+        					logo = "/images/tumblrLogo.png";
+        					likeButton = "/images/twitterLike.png";
+        					shareButton = "/images/twitterShare.png";
+        					commentButton = "/images/twitterComment.png";
+        				} else if(data[i].provider == "instagram") {
+        					logo = "/images/instagramLogo.png";
+        					likeButton = "/images/instagramLike.png";
+        					shareButton = "/images/twitterShare.png";
+        					commentButton = "/images/instagramComment.png";
+        				} 
+
+        				if (originalMessage == 'http') {
+        					message = "<img src=" + data[i].activity_message + " height=160 width=160>";
+        				} else {
+        					message = "<article>" + data[i].activity_message + "</article>";
+        				}
+
+        				function engagementCounter() {;
+        					engagementDigits = data[i].activity_likes + data[i].activity_shares + data[i].activity_comments;
+        					fillerCalculation = Math.round((engagementDigits/200) * 80);
+        				}
+        				engagementCounter();
+        				
+
+        				output += "<li>" +
+									"<div class='resultsDiv'>" +
+										"<section class='actorProfileSection'>" +
+											"<div class='actorAvatarDiv'>" +
+												"<img src=" + data[i].actor_avator + " height='160' width='160'>" +
+											"</div>" +
+											"<div class='actorInfoContainer'>" +
+												"<div class='providerLogoDiv'>" +
+													"<img src=" + logo + " height='36' width='36'>" +
+												"</div>" +
+												"<div class='actorUsernameDiv'>" +
+													data[i].actor_username +
+												"</div>" +
+												"<div class='actorDescriptionDiv'>" +
+													"<span class='descriptionSpan'>" +
+														data[i].actor_description +
+													"</span>" +
+												"</div>" +
+											"</div>" +
+										"</section>" +
+
+										"<section class='activityMessageSection'>" +
+											"<div class='activityMessageDiv'>" +
+												message +
+											"</div>" +
+											"<div class='activityDateDiv'>" +
+												data[i].activity_date +
+											"</div>" +
+										"</section>" +
+
+										"<section class='visualizationSection'>" +
+											"<div class='engagementCounterContainer'>" +
+												"<p class='engagementWord'>" +
+													"Engagement" +
+												"</p>" +
+												"<div class='engagementCounterLevel'>" +
+													"<div class='engagementCounterFiller' style='width:" + fillerCalculation + "px;'></div>" +
+												"</div>" +
+												"<p class='engagementDigits'>" + 
+													engagementDigits +
+												"</p>" +
+											"</div>" +
+											"<div class='buttonSetDiv'>" +
+												"<input type='image' src=" + likeButton + " class='likeButton'></input>" +
+												"<p>" +
+													data[i].activity_likes +
+												"</p>" +
+												"<input type='image' src=" + shareButton + " class='shareButton'></input>" +
+												"<p>" +
+													data[i].activity_shares +
+												"</p>" +
+												"<input type='image' src=" + commentButton + " class='commentButton'></input>" +
+												"<p>" +
+													data[i].activity_comments +
+												"</p>" +
+											"</div>" +
+										"</section>" +
+								"</li>" 
+					
+        			}
+
+					output += "</ul>";
+        			document.getElementById("main").innerHTML = output;
+        			
+        	});
+        	
+        </script>
+    </body>
+</html>
